@@ -19,10 +19,9 @@ export class NasaService {
     return this.http.get<Nasa>(this.configUrl);
   }
   getImageOfTheDay(): Observable<string> {
-    return this.http.get(this.configUrl).pipe(
-      filter((x) => x.hasOwnProperty('url')),
-      map((res) => res as any)
-    );
+    return this.http
+      .get<{ url: string }>(this.configUrl)
+      .pipe(map((res) => res.url));
   }
   // getImageOfTheDay(): Observable<string> {
   //   return this.http.get(this.configUrl).pipe(map((res) => res as any));

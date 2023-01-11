@@ -10,17 +10,15 @@ import { NasaService } from './nasa.service';
 export class AppComponent implements OnInit {
   title = 'nasa';
   currentData!: Nasa;
-  // public imgOfTheDay: string =
-  //   'https://apod.nasa.gov/apod/image/1903/IC405_Abolfath_3171.jpg';
-  public imgOfTheDay: string =
-    'https://apod.nasa.gov/apod/image/1903/IC405_Abolfath_3171.jpg';
+  imgOfTheDay: string = '';
 
-  constructor(private nasaService: NasaService) {}
+  constructor(public nasaService: NasaService) {}
 
   ngOnInit(): void {
     this.nasaService.getImageOfTheDay().subscribe((data: string) => {
-      // this.imgOfTheDay = data;
-      console.log(this.currentData);
+      this.imgOfTheDay = data;
+      console.log(this.imgOfTheDay);
+      console.log(typeof this.imgOfTheDay);
       // this.imgOfTheDay = data.url;
       // this.imgOfTheDay = data;
       // console.log(this.imgOfTheDay);
